@@ -1,4 +1,4 @@
-import { Providers } from "./Provider";
+import { Providers } from "./provider";
 import { Nav } from "./components/Nav";
 import Footer from "./components/Footer";
 
