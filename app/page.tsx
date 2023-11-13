@@ -1,10 +1,13 @@
-import { Box, Button } from "@chakra-ui/react";
-import React from "react";
-const page = () => {
+export default function Home() {
   return (
-    <Box w="500px" h="500px" bgColor={"brand.900"}>
-      <Button bg={"brand.700"}>Click me</Button>
-    </Box>
+    <main>
+      <h1>home</h1>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam
+        doloribus saepe pariatur obcaecati aspernatur ut consectetur quidem
+        officia necessitatibus modi aliquid voluptatem rem libero illo ex
+        ducimus itaque, minus exercitationem!
+      </p>
+    </main>
   );
-};
-export default page;
+}
