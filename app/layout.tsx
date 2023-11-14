@@ -1,7 +1,7 @@
-import { Providers } from "./Provider";
+import { Providers } from "./Providers";
 import { Nav } from "./components/Nav";
 import Footer from "./components/Footer";
-
+// import DemoTrulioo from "./components/DemoTrulio";
 export default function RootLayout({
   children,
 }: {
@@ -13,6 +13,7 @@ export default function RootLayout({
         <Providers>
           <Nav />
           {children}
+          {/* <DemoTrulioo /> */}
           <Footer />
         </Providers>
       </body>
