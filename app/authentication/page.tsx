@@ -1,5 +1,5 @@
 import DemoTrulioo from "../components/DemoTrulio"
-const authentication = () => {
+const Authentication = () => {
     return(
         <>
         <h1>this is authentication page</h1>
@@ -7,4 +7,4 @@ const authentication = () => {
         </>
     )
 }
-export default authentication
+export default Authentication
