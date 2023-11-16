@@ -1,5 +1,6 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 import {
   Button,
   FormControl,
@@ -9,13 +10,12 @@ import {
   Stack,
   useColorModeValue,
 } from "@chakra-ui/react";
-import { useRouter } from "next/router";
 
 export const FormVerification: React.FC = () => {
-  //const router= useRouter();
   const [shortCode, setShortCode] = useState("");
   const [showOtherComponent, setShowOtherComponent] = useState(false);
   const [verificationSuccess, setVerificationSuccess] = useState(false);
+  const router = useRouter();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setShortCode(e.target.value);
@@ -24,20 +24,14 @@ export const FormVerification: React.FC = () => {
   const handleClick = () => {
     const correctShortCode = "qWinHpfejeezSqek";
     if (shortCode === correctShortCode) {
-      console.log("Credenciales correctas");
       setVerificationSuccess(true);
       setShowOtherComponent(true);
+      router.push("/authentication");
     } else {
-      console.log("Credenciales incorrectas");
       setVerificationSuccess(false);
       setShowOtherComponent(true);
     }
   };
-  /*useEffect(()=>{
-    if (verificationSuccess) {
-      router.push("/authentication");
-    }
-  },[verificationSuccess])*/
 
   return (
     <Flex
