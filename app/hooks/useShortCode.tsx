@@ -4,21 +4,24 @@ const useShortCode = () => {
   const url = "http://localhost:3002/short_code";
   const token = "uVzDsREO9";
 
-  const getShortCode = () => {
-    fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: token,
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        setShortCode(data.short_code);
-        console.log("Success:", data);
-      })
-      .catch((error) => console.error("Error fetching shortcode:", error));
+  const getShortCode = async () => {
+    try {
+      const response = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: token,
+        },
+      });
+      const data = await response.json();
+      setShortCode(data.short_code);
+      console.log("Success:", data);
+    } catch (error) {
+      console.error("Error fetching shortcode:", error);
+    }
   };
+
   return { shortCode, getShortCode };
 };
+
 export default useShortCode;
