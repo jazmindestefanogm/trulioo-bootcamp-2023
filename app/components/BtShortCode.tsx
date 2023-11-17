@@ -1,9 +1,9 @@
-import { Box, Button } from "@chakra-ui/react";
+"use client";
+import { Button } from "@chakra-ui/react";
+import useShortCode from "../hooks/ShortCode";
 
 export const BtShortCode = () => {
-  return (
-    <Box bg="color.nav.color">
-      <Button></Button>
-    </Box>
-  );
+  const { shortCode, getShortCode } = useShortCode();
+  console.log(shortCode);
+  return <Button onClick={getShortCode}>Get ShortCode</Button>;
 };
