@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 const useShortCode = () => {
   const [shortCode, setShortCode] = useState("");
   const url = "http://localhost:3002/short_code";

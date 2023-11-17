@@ -1,6 +1,6 @@
 "use client";
 import { Button } from "@chakra-ui/react";
-import useShortCode from "../hooks/ShortCode";
+import useShortCode from "../hooks/useShortCode";
 
 export const BtShortCode = () => {
   const { shortCode, getShortCode } = useShortCode();
