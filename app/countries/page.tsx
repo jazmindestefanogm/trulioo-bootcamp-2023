@@ -1,9 +1,8 @@
 "use client";
 import "./countries.css";
-import { Input, Text } from "@chakra-ui/react";
+import { Input, Text,Spinner } from "@chakra-ui/react";
 import { useCountries } from "../hooks/useCountries";
 import { useState } from "react";
-import { Spinner } from "@chakra-ui/react";
 
 const URL = "http://localhost:3002/countries ";
 const token = "uVzDsREO9";
