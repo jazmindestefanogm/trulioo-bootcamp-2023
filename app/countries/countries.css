@@ -1,0 +1,22 @@
+.filtered-countries{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2em;
+    gap: 3em;
+}
+
+.filtered-countries button.country{
+    width: 17em;
+    display: flex;
+    gap: 3em;
+    align-items: center;
+    background-color: brown     ;
+}
+
+.filtered-countries image {
+    width: 10em;
+}
+
