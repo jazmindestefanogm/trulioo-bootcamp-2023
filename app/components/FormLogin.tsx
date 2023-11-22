@@ -1,5 +1,6 @@
 "use client";
-
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 import {
   Flex,
   Box,
@@ -9,9 +10,46 @@ import {
   Stack,
   Button,
   Heading,
+  useToast,
 } from "@chakra-ui/react";
 
+const email = "lt60900@gm2dev.com";
+const password = "EZZ0055";
+
 export default function FormLogin() {
+  const [inputEmail, setInputEmail] = useState("");
+  const [inputPassword, setInputPassword] = useState("");
+  const toast = useToast();
+  const router = useRouter();
+
+  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInputEmail(e.target.value);
+  };
+
+  const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInputPassword(e.target.value);
+  };
+
+  const handleClick = () => {
+    if (inputEmail === email && inputPassword === password) {
+      toast({
+        title: `Credentials valid`,
+        status: "success",
+        position: "bottom-left",
+        isClosable: true,
+      });
+      router.push(`/getShortCode`);
+    } else {
+      toast({
+        title: `Credentials invalid`,
+        status: "error",
+        position: "bottom-left",
+        isClosable: true,
+      });
+      setInputEmail("");
+      setInputPassword("");
+    }
+  };
   return (
     <Flex minH={"100vh"} align={"center"} justify={"center"}>
       <Stack spacing={8} mx={"auto"} maxW={"lg"} py={12} px={6}>
@@ -24,22 +62,30 @@ export default function FormLogin() {
               <FormLabel>Email address</FormLabel>
               <Input
                 bg="colors.nav.color"
+                color="white"
+                borderColor="transparent"
                 focusBorderColor="transparent"
                 type="email"
                 _focus={{
                   color: "white",
                 }}
+                value={inputEmail}
+                onChange={handleEmailChange}
               />
             </FormControl>
             <FormControl id="password">
               <FormLabel>Password</FormLabel>
               <Input
                 bg="colors.nav.color"
+                color="white"
+                borderColor="transparent"
                 focusBorderColor="transparent"
                 type="password"
                 _focus={{
                   color: "white",
                 }}
+                value={inputPassword}
+                onChange={handlePasswordChange}
               />
             </FormControl>
             <Stack spacing={10}>
@@ -49,6 +95,7 @@ export default function FormLogin() {
                 justify={"space-between"}
               ></Stack>
               <Button
+                onClick={handleClick}
                 bg="colors.nav.color"
                 color={"white"}
                 _hover={{
