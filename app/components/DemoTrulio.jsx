@@ -2,10 +2,8 @@
 
 import { Trulioo, event } from "@trulioo/docv";
 
-export default function DemoTrulioo(){
+export default function DemoTrulioo({shortCode}){
 const elementID = "trulioo-sdk"; // The HTML element id to attach to
-const shortCode = "qWinHpfejeezSqek"; // Set the obtained short code from step #1
-
 // Set up the workflow configuration
 const workflowOption = Trulioo.workflow()
   .setShortCode(shortCode)

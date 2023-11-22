@@ -22,11 +22,11 @@ export const FormVerification: React.FC = () => {
   };
 
   const handleClick = () => {
-    const correctShortCode = "qWinHpfejeezSqek";
+    const correctShortCode = "rSqi3gfmNedjgfni";
     if (shortCode === correctShortCode) {
       setVerificationSuccess(true);
       setShowOtherComponent(true);
-      router.push("/authentication");
+      router.push(`/authentication?code=${correctShortCode}`);
     } else {
       setVerificationSuccess(false);
       setShowOtherComponent(true);
