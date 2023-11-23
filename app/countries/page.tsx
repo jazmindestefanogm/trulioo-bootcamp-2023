@@ -14,10 +14,9 @@ const Countries = () => {
   );
   const [language, setLanguage] = useState("");
 
-  language != undefined
-    ? localStorage.setItem("language", language)
-    : console.log("no se selecciono un lenguaje");
-
+  if (typeof window !== 'undefined') {
+    localStorage.setItem("language", language);
+  }
   return (
     <>
       <h1>Países</h1>

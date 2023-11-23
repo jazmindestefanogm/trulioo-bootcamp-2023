@@ -28,7 +28,7 @@ const SignUp = () => {
     if (!regex.test(password)) {
       toast({
         title:
-          "The password must contain at least one capital letter and a number.",
+          "The password must contain at least one capital letter and a number",
         status: "error",
         isClosable: true,
         position: "bottom-left",
@@ -74,7 +74,7 @@ const SignUp = () => {
         }
       } else {
         toast({
-          title: "The passwords don't match.",
+          title: "The passwords do not match",
           status: "error",
           isClosable: true,
           position: "bottom-left",
@@ -99,7 +99,7 @@ const SignUp = () => {
                 setUser(e.target.value);
               }}
             />
-            <FormHelperText>We'll never share your email.</FormHelperText>
+            <FormHelperText>We ll never share your email.</FormHelperText>
           </FormControl>
           <FormControl isRequired>
             <FormLabel>Password</FormLabel>
@@ -112,7 +112,7 @@ const SignUp = () => {
                 setPassword(e.target.value);
               }}
             />
-            <FormHelperText>We'll never share your email.</FormHelperText>
+            <FormHelperText>We ll never share your email.</FormHelperText>
           </FormControl>
           <FormControl isRequired>
             <FormLabel>Confirm your Password</FormLabel>
@@ -125,7 +125,7 @@ const SignUp = () => {
                 setConfirmPassword(e.target.value);
               }}
             />
-            <FormHelperText>We'll never share your email.</FormHelperText>
+            <FormHelperText>We ll never share your email.</FormHelperText>
           </FormControl>
           <Button
             bgColor="colors.button.bakcground"
