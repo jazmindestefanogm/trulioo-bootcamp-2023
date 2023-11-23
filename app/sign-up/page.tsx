@@ -15,19 +15,20 @@ import { useState } from "react";
 const SignUp = () => {
   const URL = "http://localhost:3002/signup ";
   const toast = useToast();
-  const [user,setUser]= useState("")
+  const [user, setUser] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const router = useRouter();
 
-  const checkPasswords = async (evt:any) => {
+  const checkPasswords = async (evt: any) => {
     evt.preventDefault();
-    
+
     const regex = /^(?=.*\d)(?=.*[a-z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,60}$/;
-  
+
     if (!regex.test(password)) {
       toast({
-        title: "The password must contain at least one capital letter and a number",
+        title:
+          "The password must contain at least one capital letter and a number",
         status: "error",
         isClosable: true,
         position: "bottom-left",
@@ -36,16 +37,16 @@ const SignUp = () => {
       if (password === confirmPassword) {
         try {
           const postdata = await fetch(URL, {
-            method: 'POST',
+            method: "POST",
             headers: new Headers({
-              'Content-Type': 'application/json'
+              "Content-Type": "application/json",
             }),
             body: JSON.stringify({
               username: user,
               password: password,
             }),
           });
-          console.log(postdata)
+          console.log(postdata);
           if (postdata.ok) {
             toast({
               title: "Account created",
@@ -53,13 +54,14 @@ const SignUp = () => {
               isClosable: true,
               position: "bottom-left",
             });
-            router.push("/login ");
-
+            router.push("/sign-in");
           } else {
-            console.log(JSON.stringify({
-              username: user,
-              password: password,
-            }))
+            console.log(
+              JSON.stringify({
+                username: user,
+                password: password,
+              })
+            );
             toast({
               title: "Error creating account",
               status: "error",
@@ -78,9 +80,8 @@ const SignUp = () => {
           position: "bottom-left",
         });
       }
-      }
+    }
   };
-  
 
   return (
     <>
@@ -94,8 +95,8 @@ const SignUp = () => {
               placeholder="Enter your email"
               pattern=".+@gm2dev.com"
               title="Please provide only a corporate email address"
-              onChange={(e)=>{
-                setUser(e.target.value)
+              onChange={(e) => {
+                setUser(e.target.value);
               }}
             />
             <FormHelperText>We ll never share your email.</FormHelperText>

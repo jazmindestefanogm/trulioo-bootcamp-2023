@@ -8,10 +8,9 @@ import {
   Heading,
   Input,
   Stack,
-  useColorModeValue,
 } from "@chakra-ui/react";
 
-export const FormVerification: React.FC = () => {
+export const VerificationShortCode: React.FC = () => {
   const [shortCode, setShortCode] = useState("");
   const [showOtherComponent, setShowOtherComponent] = useState(false);
   const [verificationSuccess, setVerificationSuccess] = useState(false);
@@ -34,12 +33,7 @@ export const FormVerification: React.FC = () => {
   };
 
   return (
-    <Flex
-      minH={"100vh"}
-      align={"center"}
-      justify={"center"}
-      bg={useColorModeValue("gray.50", "gray.800")}
-    >
+    <Flex minH={"100vh"} align={"center"} justify={"center"}>
       {showOtherComponent ? (
         <div className="message">
           {verificationSuccess ? (
