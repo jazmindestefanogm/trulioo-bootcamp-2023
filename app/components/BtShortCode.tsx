@@ -1,5 +1,5 @@
 "use client";
-import { Button } from "@chakra-ui/react";
+import { Button, Flex } from "@chakra-ui/react";
 import { useRouter } from "next/navigation";
 import useShortCode from "../hooks/useShortCode";
 
@@ -13,5 +13,13 @@ export const BtShortCode = () => {
     }
   };
 
-  return <Button onClick={handleGetShortCode}>Get ShortCode</Button>;
+  return (
+    <Flex
+      justifyContent={"center"}
+      align={"center"}
+      style={{ height: "100vh" }}
+    >
+      <Button onClick={handleGetShortCode}>Get ShortCode</Button>
+    </Flex>
+  );
 };
