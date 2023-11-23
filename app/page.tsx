@@ -1,9 +1,8 @@
-import { FormVerification } from "./components/FormVerification";
+import { VerificationShortCode } from "./components/VerificationShortCode";
 export default function Home() {
   return (
     <main>
-      <h1>home</h1>
-      <FormVerification/>
+      <VerificationShortCode />
     </main>
   );
 }

@@ -46,7 +46,13 @@ const SocialButton = ({
 
 export default function Footer() {
   return (
-    <Box bg="colors.nav.color" color="colors.nav.background">
+    <Box
+      bg="colors.nav.color"
+      color="colors.nav.background"
+      position="fixed"
+      bottom={0}
+      width="100%"
+    >
       <Container
         as={Stack}
         maxW={"6xl"}
