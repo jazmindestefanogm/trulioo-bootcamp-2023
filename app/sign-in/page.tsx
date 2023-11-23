@@ -1,10 +1,10 @@
 import FormLogin from "../components/FormLogin";
 
-const Login = () => {
+const SingIn = () => {
   return (
     <>
       <FormLogin />
     </>
   );
 };
-export default Login;
+export default SingIn;

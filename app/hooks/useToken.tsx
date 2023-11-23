@@ -1,9 +1,12 @@
+"use client";
 import { useState } from "react";
 import { useToast } from "@chakra-ui/react";
+
 interface UseTokenReturnType {
   token: string | null;
   getToken: (email: string, password: string) => Promise<string | null>;
 }
+
 const useToken = (): UseTokenReturnType => {
   const toast = useToast();
   const [token, setToken] = useState<string | null>(null);

@@ -11,14 +11,12 @@ import {
   Stack,
   Button,
   Heading,
-  useToast,
 } from "@chakra-ui/react";
 
 export default function FormLogin() {
   const [inputEmail, setInputEmail] = useState("");
   const [inputPassword, setInputPassword] = useState("");
   const { getToken } = useToken();
-  const toast = useToast();
   const router = useRouter();
 
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -34,24 +32,11 @@ export default function FormLogin() {
       const receivedToken = await getToken(inputEmail, inputPassword);
       if (receivedToken) {
         localStorage.setItem("token", receivedToken);
-        toast({
-          title: `Credentials valid`,
-          status: "success",
-          position: "bottom-left",
-          isClosable: true,
-        });
         router.push(`/getShortCode`);
       }
-    } catch (error) {
-      console.error("Error fetching token:", error);
-      toast({
-        title: `Error fetching token`,
-        status: "error",
-        position: "bottom-left",
-        isClosable: true,
-      });
-    }
+    } catch (error) {}
   };
+
   return (
     <Flex minH={"100vh"} align={"center"} justify={"center"}>
       <Stack spacing={8} mx={"auto"} maxW={"lg"} py={12} px={6}>

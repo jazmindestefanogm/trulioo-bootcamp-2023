@@ -9,7 +9,7 @@ export const BtShortCode = () => {
   const handleGetShortCode = () => {
     getShortCode();
     if (shortCode) {
-      router.push(`/about?ShortCode=${shortCode}`);
+      router.push(`/authentication?ShortCode=${shortCode}`);
     }
   };
 
