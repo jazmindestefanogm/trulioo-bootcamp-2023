@@ -27,7 +27,7 @@ const SignUp = () => {
   
     if (!regex.test(password)) {
       toast({
-        title: "The password must contain at least one capital letter and a number.",
+        title: "The password must contain at least one capital letter and a number",
         status: "error",
         isClosable: true,
         position: "bottom-left",
@@ -72,7 +72,7 @@ const SignUp = () => {
         }
       } else {
         toast({
-          title: "The passwords don't match.",
+          title: "The passwords do not match",
           status: "error",
           isClosable: true,
           position: "bottom-left",
