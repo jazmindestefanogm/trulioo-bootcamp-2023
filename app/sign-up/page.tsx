@@ -98,7 +98,7 @@ const SignUp = () => {
                 setUser(e.target.value)
               }}
             />
-            <FormHelperText>We'll never share your email.</FormHelperText>
+            <FormHelperText>We ll never share your email.</FormHelperText>
           </FormControl>
           <FormControl isRequired>
             <FormLabel>Password</FormLabel>
@@ -111,7 +111,7 @@ const SignUp = () => {
                 setPassword(e.target.value);
               }}
             />
-            <FormHelperText>We'll never share your email.</FormHelperText>
+            <FormHelperText>We ll never share your email.</FormHelperText>
           </FormControl>
           <FormControl isRequired>
             <FormLabel>Confirm your Password</FormLabel>
@@ -124,7 +124,7 @@ const SignUp = () => {
                 setConfirmPassword(e.target.value);
               }}
             />
-            <FormHelperText>We'll never share your email.</FormHelperText>
+            <FormHelperText>We ll never share your email.</FormHelperText>
           </FormControl>
           <Button
             bgColor="colors.button.bakcground"
