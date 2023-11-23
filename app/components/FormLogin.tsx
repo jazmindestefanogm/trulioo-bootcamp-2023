@@ -31,7 +31,7 @@ export default function FormLogin() {
     try {
       const receivedToken = await getToken(inputEmail, inputPassword);
       if (receivedToken) {
-        if (window != undefined) {
+        if (typeof window != undefined) {
           localStorage.setItem("token", receivedToken);
         }
         router.push(`/getShortCode`);
