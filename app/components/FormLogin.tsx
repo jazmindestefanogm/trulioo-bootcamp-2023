@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import useToken from "../hooks/useToken";
 import {
   Flex,
   Box,
@@ -13,12 +14,10 @@ import {
   useToast,
 } from "@chakra-ui/react";
 
-const email = "lt60900@gm2dev.com";
-const password = "EZZ0055";
-
 export default function FormLogin() {
   const [inputEmail, setInputEmail] = useState("");
   const [inputPassword, setInputPassword] = useState("");
+  const { getToken } = useToken();
   const toast = useToast();
   const router = useRouter();
 
@@ -30,24 +29,27 @@ export default function FormLogin() {
     setInputPassword(e.target.value);
   };
 
-  const handleClick = () => {
-    if (inputEmail === email && inputPassword === password) {
+  const handleClick = async () => {
+    try {
+      const receivedToken = await getToken(inputEmail, inputPassword);
+      if (receivedToken) {
+        localStorage.setItem("token", receivedToken);
+        toast({
+          title: `Credentials valid`,
+          status: "success",
+          position: "bottom-left",
+          isClosable: true,
+        });
+        router.push(`/getShortCode`);
+      }
+    } catch (error) {
+      console.error("Error fetching token:", error);
       toast({
-        title: `Credentials valid`,
-        status: "success",
-        position: "bottom-left",
-        isClosable: true,
-      });
-      router.push(`/getShortCode`);
-    } else {
-      toast({
-        title: `Credentials invalid`,
+        title: `Error fetching token`,
         status: "error",
         position: "bottom-left",
         isClosable: true,
       });
-      setInputEmail("");
-      setInputPassword("");
     }
   };
   return (
