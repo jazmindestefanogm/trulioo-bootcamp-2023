@@ -5,8 +5,7 @@ import { Trulioo, event } from "@trulioo/docv";
 export default function DemoTrulioo({shortCode}){
 const elementID = "trulioo-sdk"; // The HTML element id to attach to
 // Set up the workflow configuration
-const workflowOption = Trulioo.workflow()
-  .setShortCode(shortCode)
+const workflowOption = Trulioo.workflow() 
   .setDemoMode(true);
 // Set up callbacks to get results and debugging errors
 const callbacks = new event.adapters.ListenerCallback({
