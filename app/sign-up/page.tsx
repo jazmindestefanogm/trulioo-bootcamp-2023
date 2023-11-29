@@ -12,8 +12,11 @@ import { useRouter } from "next/navigation";
 import "./signUp.css";
 import { useState } from "react";
 
+const URL = "http://localhost:3002/signup";
+
+const regex = /^(?=.*[A-Z])(?=.*\d).+/;
+
 const SignUp = () => {
-  const URL = "http://localhost:3002/signup ";
   const toast = useToast();
   const [user, setUser] = useState("");
   const [password, setPassword] = useState("");
@@ -23,66 +26,75 @@ const SignUp = () => {
   const checkPasswords = async (evt: any) => {
     evt.preventDefault();
 
-    const regex = /^(?=.*\d)(?=.*[a-z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,60}$/;
-
-    if (!regex.test(password)) {
+    if (!user.endsWith("@gm2dev.com")) {
       toast({
         title:
-          "The password must contain at least one capital letter and a number",
+          "Please provide a corporate email address ending with @gm2dev.com",
         status: "error",
         isClosable: true,
         position: "bottom-left",
       });
+      return;
     } else {
-      if (password === confirmPassword) {
-        try {
-          const postdata = await fetch(URL, {
-            method: "POST",
-            headers: new Headers({
-              "Content-Type": "application/json",
-            }),
-            body: JSON.stringify({
-              username: user,
-              password: password,
-            }),
-          });
-          console.log(postdata);
-          if (postdata.ok) {
-            toast({
-              title: "Account created",
-              status: "success",
-              isClosable: true,
-              position: "bottom-left",
-            });
-            router.push("/sign-in");
-          } else {
-            console.log(
-              JSON.stringify({
+
+      if (password == confirmPassword) {
+
+        if (regex.test(password)) {
+          try {
+            const postdata = await fetch(URL, {
+              method: "POST",
+              headers: new Headers({
+                "Content-Type": "application/json",
+              }),
+              body: JSON.stringify({
                 username: user,
                 password: password,
-              })
-            );
-            toast({
-              title: "Error creating account",
-              status: "error",
-              isClosable: true,
-              position: "bottom-left",
+              }),
             });
+
+            if (postdata.ok) {
+              toast({
+                title: "Account created",
+                status: "success",
+                isClosable: true,
+                position: "bottom-left",
+              });
+              router.push("/sign-in");
+            } else {
+              console.log(
+                JSON.stringify({ username: user, password: password }),
+              );
+              toast({
+                title: "Error creating account",
+                status: "error",
+                isClosable: true,
+                position: "bottom-left",
+              });
+            }
+          } catch (error) {
+            console.error("Error:", error);
           }
-        } catch (error) {
-          console.error("Error:", error);
+        } else {
+          toast({
+            title:
+              "The password must contain at least one capital letter and a symbol",
+            status: "error",
+            isClosable: true,
+            position: "bottom-left",
+          });
         }
       } else {
         toast({
-          title: "The passwords do not match",
+          title: "Passwords do not match",
           status: "error",
           isClosable: true,
           position: "bottom-left",
         });
+        return;
       }
     }
   };
-
+  
   return (
     <>
       <div className="form-container">
@@ -140,4 +152,5 @@ const SignUp = () => {
     </>
   );
 };
+
 export default SignUp;
