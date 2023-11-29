@@ -36,12 +36,10 @@ const SignUp = () => {
       });
       return;
     } else {
-      console.log("ciclo else");
 
       if (password == confirmPassword) {
-        console.log("password iguales")
+
         if (regex.test(password)) {
-          console.log("regex cumplido")
           try {
             const postdata = await fetch(URL, {
               method: "POST",
@@ -53,8 +51,6 @@ const SignUp = () => {
                 password: password,
               }),
             });
-
-            console.log(postdata);
 
             if (postdata.ok) {
               toast({
@@ -79,7 +75,6 @@ const SignUp = () => {
             console.error("Error:", error);
           }
         } else {
-          console.log("regex no cumplido")
           toast({
             title:
               "The password must contain at least one capital letter and a symbol",
@@ -95,11 +90,11 @@ const SignUp = () => {
           isClosable: true,
           position: "bottom-left",
         });
-        console.log("2do if");
         return;
       }
     }
   };
+  
   return (
     <>
       <div className="form-container">
