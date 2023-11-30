@@ -13,7 +13,6 @@ export default function RootLayout({
         <Providers>
           <Nav />
           {children}
-          {/* <DemoTrulioo /> */}
           <Footer />
         </Providers>
       </body>
